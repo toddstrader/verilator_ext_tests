@@ -4,3 +4,6 @@
 [submodule "submodules/Cores-SweRV"]
 	path = submodules/Cores-SweRV
 	url = https://github.com/chipsalliance/Cores-SweRV.git
+[submodule "submodules/verilator"]
+	path = submodules/verilator
+	url = https://github.com/verilator/verilator.git
