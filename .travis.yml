@@ -1,0 +1,36 @@
+# DESCRIPTION: Travis-CI config
+#
+# Copyright 2003-2019 by Todd Strader. Verilator is free software; you can
+# redistribute it and/or modify it under the terms of either the GNU Lesser
+# General Public License Version 3 or the Perl Artistic License Version 2.0.
+
+language: cpp
+
+env:
+  global:
+    - VERILATOR_CACHE=$HOME/verilator_cache
+    - VERILATOR_ROOT=submodules/verilator
+
+cache:
+  directories:
+    - $VERILATOR_CACHE
+
+before_install:
+  -  git submodule update --init --recursive
+
+before_script:
+  - export NUM_JOBS=$((`nproc` + 1))
+  - export DRIVER_FLAGS=--j $NUM_JOBS
+
+stages:
+  - build
+  - test
+
+jobs:
+  include:
+    - stage: build
+      name: Build Verilator
+      script: ci/build_verilator.sh
+    - stage: test
+      name: Run Tests
+      script: make test
