@@ -23,11 +23,11 @@ if [[ ! -f ${CACHED_REV_FILE} || \
     autoconf && ./configure && make -j ${NUM_JOBS}
 # Copy the Verilator build artifacts
     mkdir -p ${VERILATOR_CACHE}
-    cp ${VERILATOR_ROOT}/bin/*bin* ${VERILATOR_CACHE}
+    cp bin/*bin* ${VERILATOR_CACHE}
 else
     echo "Using cached Verilator"
-    cp ${VERILATOR_CACHE}/* ${VERILATOR_ROOT}/bin
     cd ${VERILATOR_ROOT}
 # Create include/verilated_config.h and maybe other things
     autoconf && ./configure
+    cp ${VERILATOR_CACHE}/* bin
 fi

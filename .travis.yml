@@ -33,4 +33,6 @@ jobs:
       script: ci/build_verilator.sh
     - stage: test
       name: Run Tests
-      script: make test
+      script:
+        - ci/build_verilator.sh
+        - make test
