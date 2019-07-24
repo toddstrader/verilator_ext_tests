@@ -20,7 +20,7 @@ before_install:
 
 before_script:
   - export NUM_JOBS=$((`nproc` + 1))
-  - export DRIVER_FLAGS=--j $NUM_JOBS
+  - export DRIVER_FLAGS="--j $NUM_JOBS"
 
 stages:
   - build
