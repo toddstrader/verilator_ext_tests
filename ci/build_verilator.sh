@@ -25,6 +25,8 @@ if [[ ! -f ${CACHED_REV_FILE} || \
 # Copy the Verilator build artifacts
     mkdir -p ${VERILATOR_CACHE}
     cp bin/*bin* ${VERILATOR_CACHE}
+# Remember the Git revision
+    echo ${VERILATOR_REV} > ${CACHED_REV_FILE}
 else
     echo "Using cached Verilator"
     cd ${VERILATOR_ROOT}
