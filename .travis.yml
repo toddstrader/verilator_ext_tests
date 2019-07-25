@@ -16,8 +16,9 @@ cache:
     - $VERILATOR_CACHE
 
 before_install:
-  -  git submodule update --init --recursive
+  -  git submodule update --init --recursive --remote
 
+# TODO -- clean up debug
 before_script:
   - export NUM_JOBS=$((`nproc` + 1))
   - export DRIVER_FLAGS="--j $NUM_JOBS"
