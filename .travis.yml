@@ -9,7 +9,7 @@ language: cpp
 env:
   global:
     - VERILATOR_CACHE=$HOME/verilator_cache
-    - VERILATOR_ROOT=submodules/verilator
+    - VERILATOR_ROOT=$PWD/submodules/verilator
 
 cache:
   directories:

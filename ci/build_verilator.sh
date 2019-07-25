@@ -6,7 +6,7 @@ if [ -z ${NUM_JOBS} ]; then
 fi
 
 if [ -z ${VERILATOR_ROOT} ]; then
-    VERILATOR_ROOT=submodules/verilator
+    VERILATOR_ROOT=${PWD}submodules/verilator
 fi
 
 VERILATOR_REV=$(git --git-dir ${VERILATOR_ROOT}/.git rev-parse HEAD)
