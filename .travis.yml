@@ -35,6 +35,10 @@ jobs:
   include:
     - stage: build
       name: Build Verilator
+      script: echo "Done building Verilator"
     - stage: test
       name: Run Tests
       script: make test
+
+after_script:
+  - git submodule status
