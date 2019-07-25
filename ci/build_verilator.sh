@@ -19,6 +19,7 @@ CACHED_REV_FILE=${VERILATOR_CACHE}/rev.txt
 if [[ ! -f ${CACHED_REV_FILE} || \
       $(< ${CACHED_REV_FILE}) != ${VERILATOR_REV} ]]; then
     echo "Building Verilator"
+# TODO -- cache only mode?
     cd ${VERILATOR_ROOT}
     autoconf && ./configure && make -j ${NUM_JOBS}
 # Copy the Verilator build artifacts

@@ -21,6 +21,11 @@ before_install:
 before_script:
   - export NUM_JOBS=$((`nproc` + 1))
   - export DRIVER_FLAGS="--j $NUM_JOBS"
+  - env
+  - ls $VERILATOR_CACHE
+  - ci/build_verilator.sh
+  - ls $VERILATOR_CACHE
+  - cat $VERILATOR_CACHE/rev.txt
 
 stages:
   - build
@@ -30,9 +35,6 @@ jobs:
   include:
     - stage: build
       name: Build Verilator
-      script: ci/build_verilator.sh
     - stage: test
       name: Run Tests
-      script:
-        - ci/build_verilator.sh
-        - make test
+      script: make test
