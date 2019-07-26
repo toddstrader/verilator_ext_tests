@@ -9,7 +9,7 @@ if [ -z ${VERILATOR_ROOT} ]; then
     VERILATOR_ROOT=${PWD}submodules/verilator
 fi
 
-VERILATOR_REV=$(git --git-dir ${VERILATOR_ROOT}/.git rev-parse HEAD)
+VERILATOR_REV=$(cd submodules/verilator/ && git rev-parse HEAD)
 echo "Found Verilator rev ${VERILATOR_REV}"
 
 CACHED_REV_FILE=${VERILATOR_CACHE}/rev.txt
