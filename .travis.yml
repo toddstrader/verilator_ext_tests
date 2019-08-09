@@ -18,15 +18,10 @@ cache:
 before_install:
   -  git submodule update --init --recursive --remote
 
-# TODO -- clean up debug
 before_script:
   - export NUM_JOBS=$((`nproc` + 1))
   - export DRIVER_FLAGS="--j $NUM_JOBS"
-  - env
-  - ls $VERILATOR_CACHE
   - ci/build_verilator.sh
-  - ls $VERILATOR_CACHE
-  - cat $VERILATOR_CACHE/rev.txt
 
 stages:
   - build
@@ -34,6 +29,8 @@ stages:
 
 jobs:
   include:
+# build_verilator.sh will only build for this stage, all other stages
+#   must have a cached copy of the tool
     - stage: build
       name: Build Verilator
       script: echo "Done building Verilator"

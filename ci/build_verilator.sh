@@ -6,7 +6,7 @@ if [ -z ${NUM_JOBS} ]; then
 fi
 
 if [ -z ${VERILATOR_ROOT} ]; then
-    VERILATOR_ROOT=${PWD}submodules/verilator
+    VERILATOR_ROOT=${PWD}/submodules/verilator/
 fi
 
 VERILATOR_REV=$(cd submodules/verilator/ && git rev-parse HEAD)
@@ -19,7 +19,14 @@ CACHED_REV_FILE=${VERILATOR_CACHE}/rev.txt
 if [[ ! -f ${CACHED_REV_FILE} || \
       $(< ${CACHED_REV_FILE}) != ${VERILATOR_REV} ]]; then
     echo "Building Verilator"
-# TODO -- cache only mode?
+
+# Unsure why Travis capitalizes the build stge name, but it does
+    if [[ -n ${TRAVIS_BUILD_STAGE_NAME} && \
+         ${TRAVIS_BUILD_STAGE_NAME} != "Build" ]]; then
+      echo "Building Verilator in Travis build stage other than \"Build\": ${TRAVIS_BUILD_STAGE_NAME}"
+      exit -1
+    fi
+
     cd ${VERILATOR_ROOT}
     autoconf && ./configure && make -j ${NUM_JOBS}
 # Copy the Verilator build artifacts

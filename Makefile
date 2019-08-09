@@ -37,7 +37,6 @@ test:
 
 ######################################################################
 
-# TODO -- What is *obj_*?  Do we need this rm?
 clean mostlyclean distclean maintainer-clean::
 	rm -rf */obj_*
 	rm -rf obj_*
