@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 IN_TREE_VLT=$(realpath ${PWD}/submodules/verilator)
