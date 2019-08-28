@@ -16,7 +16,7 @@ cache:
     - $VERILATOR_CACHE
 
 before_install:
-  -  git submodule update --init --recursive --remote
+  - ci/update_submodules.sh
 
 before_script:
   - export NUM_JOBS=$((`nproc` + 1))
