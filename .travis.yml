@@ -12,7 +12,7 @@ env:
   global:
     - VERILATOR_CACHE=$HOME/verilator_cache
     - VERILATOR_ROOT=$PWD/submodules/verilator
-    - VERILATOR_NUM_JOBS=$((`nproc` + 1))
+    - VERILATOR_NUM_JOBS=$(echo `nproc` + 1 | bc)
     - OBJCACHE=ccache
 
 cache:
