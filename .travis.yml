@@ -4,8 +4,10 @@
 # redistribute it and/or modify it under the terms of either the GNU Lesser
 # General Public License Version 3 or the Perl Artistic License Version 2.0.
 
-language: cpp
+version: ~> 1.0
 
+os: linux
+language: cpp
 cache: ccache
 
 env:
@@ -48,4 +50,5 @@ after_script:
 notifications:
   email:
     if: repo = verilator/verilator_ext_tests
+    recipients:
       - todd.strader@gmail.com
