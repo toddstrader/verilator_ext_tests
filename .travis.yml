@@ -44,3 +44,8 @@ jobs:
 
 after_script:
   - git submodule status
+
+notifications:
+  email:
+    if: repo = verilator/verilator_ext_tests
+      - todd.strader@gmail.com
